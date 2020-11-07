@@ -1,0 +1,156 @@
+org 100h 
+.model small
+.code
+
+main proc
+    
+        
+    mov ah, 1
+    int 21h
+    
+    mov bl, al
+    int 21h
+    
+    mov cl, al
+    int 21h
+    
+    mov ch, al
+    
+    
+    ; for task 1
+    mov ah, 2
+    int 21h    
+             
+    mov dl, 0ah
+    int 21h
+    
+    mov dl, 0dh
+    int 21h
+    
+    mov dl, bl
+    int 21h 
+    
+        mov dl, 0ah
+        int 21h
+    
+        mov dl, 0dh
+        int 21h
+    
+    mov dl, cl
+    int 21h
+         
+        mov dl, 0ah
+        int 21h
+    
+        mov dl, 0dh
+        int 21h 
+        
+    mov dl, ch
+    int 21h
+         
+        mov dl, 0ah
+        int 21h
+    
+        mov dl, 0dh
+        int 21h
+    
+    ; for task 2
+    mov ah, 2
+    int 21h    
+    
+    mov dl, ch
+    int 21h
+    
+        mov dl, 20h
+        int 21h 
+    
+    mov dl, cl
+    int 21h
+    
+        mov dl, 20h
+        int 21h
+    
+    mov dl, bl
+    int 21h
+        
+        mov dl, 0ah
+        int 21h
+    
+        mov dl, 0dh
+        int 21h
+        
+    ;for task 3
+    
+    mov ah, 1
+   
+    int 21h
+    
+    mov bl, al      ; store in 1
+   
+    int 21h 
+    
+    mov cl, al    ; store in 2
+   
+    add bl, cl
+   
+    sub bl, 30h
+   
+    mov ah, 2  ;output
+    mov dl, 10
+   
+    int 21h    
+   
+    mov dl, 13
+    int 21h
+ 
+   
+    mov dl, bl
+    int 21h
+    
+    mov dl, 10
+   
+    int 21h    
+   
+    mov dl, 13
+    int 21h
+     
+     
+     
+     
+        ; for task 4
+        
+        
+    
+    mov ah, 1
+   
+    int 21h
+    
+    mov bl, al      ; store in 1
+   
+    int 21h 
+    
+    mov cl, al    ; store in 2
+   
+    sub bl, cl
+   
+    add bl, 30h
+   
+    mov ah, 2  ;output
+    mov dl, 10
+   
+    int 21h    
+   
+    mov dl, 13
+    int 21h
+ 
+   
+    mov dl, bl
+    int 21h
+
+   
+    ret
+        
+     
+main endp
+
+end main

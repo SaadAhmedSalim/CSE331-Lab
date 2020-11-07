@@ -1,0 +1,19 @@
+org 100h 
+.model small
+.code
+
+main proc
+    
+        
+    mov ah, 1
+    int 21h
+    
+    mov bl, al
+    
+    mov ah, 4ch
+    mov al, 6
+    int 21h
+    
+main endp
+
+end main
