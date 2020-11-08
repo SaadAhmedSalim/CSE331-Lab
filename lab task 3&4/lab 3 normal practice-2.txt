@@ -1,0 +1,48 @@
+ORG 100H
+
+.MODEL SMALL
+.DATA 
+    V DB 0FH, 32H, 76H, '$'     ; array declaring
+    V1 DB ?,?,?,?, '$'
+    STR DB "SAADSALIM$"
+    NEWLINE DB 10, 13, '$'
+    
+.CODE
+
+MAIN PROC
+    
+    MOV AX, @DATA    ; variable ta call korbe jeta 16 bit number. akhn kaaj ds e pathano
+    MOV DS, AX
+    
+    MOV BL, V1[0]
+    MOV CL, V
+    
+    MOV SI, 3        ; si e 3 value e rakhsi
+    MOV DL, V1[SI]   ; ei line e 3 k access korsi
+        
+        
+        INC SI
+        MOV DL, V1[SI]
+        
+         
+    LEA DX, STR
+    MOV AH, 9
+    INT 21H    
+        
+        LEA DX, NEWLINE
+        INT 21H
+        
+    LEA DX, V
+    INT 21H
+         
+           
+    
+    
+    MOV AH, 4CH      ; terminated 
+    INT 21H
+    
+    
+    
+MAIN ENDP
+
+END MAIN

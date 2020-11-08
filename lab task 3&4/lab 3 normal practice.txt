@@ -1,0 +1,56 @@
+ORG 100H
+
+.MODEL SMALL
+.DATA 
+    SALIM DB 32H     ; variable name SALIM ; DB means Define Byte
+    SAAD DB 33H
+.CODE
+
+MAIN PROC
+    
+    MOV AX, @DATA    ; variable ta call korbe jeta 16 bit number. akhn kaaj ds e pathano
+    MOV DS, AX
+    
+    MOV AH, 2
+    MOV DL, SALIM    ; showing output
+    INT 21H 
+    
+    
+        MOV DL, 10
+        INT 21H
+        MOV DL, 13
+        INT 21H
+        
+        
+    MOV AH, 2
+    MOV DL, SAAD    ; showing output
+    INT 21H
+        
+        
+        
+    MOV BH, SALIM
+    MOV BL, SAAD
+    
+    ADD BH, BL
+    SUB BH, 30H
+        
+        
+        MOV DL, 10
+        INT 21H        
+        MOV DL, 13
+        INT 21H
+        
+        
+    MOV AH, 2
+    MOV DL, BH    ; showing output
+    INT 21H
+    
+    
+    MOV AH, 4CH      ; terminated 
+    INT 21H
+    
+    
+    
+MAIN ENDP
+
+END MAIN
