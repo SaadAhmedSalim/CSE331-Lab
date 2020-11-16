@@ -1,0 +1,110 @@
+ORG 100H 
+.MODEL SMALL
+.STACK 100H
+.DATA
+     V DB "This is A CLASS$" 
+     C DB ?,?,?,'$'
+
+.CODE 
+    
+    MOV AX,@DATA 
+    MOV DS,AX
+      MOV AH,9
+    LEA DX,V
+    INT 21H
+    MOV DH,0
+    MOV AH,0   
+    MOV DL,0 
+    MOV SI,15
+    MOV CX,15 
+   
+       
+    LOP:
+    MOV BL,V[SI] 
+    CMP BL,'A'
+    JE CON  
+    
+    MOV BL,V[SI] 
+    CMP BL,'E'
+    JE CON  
+    
+    MOV BL,V[SI] 
+    CMP BL,'I'
+    JE CON  
+    
+    MOV BL,V[SI] 
+    CMP BL,'O'
+    JE CON  
+    
+     MOV BL,V[SI] 
+    CMP BL,'U'
+    JE CON 
+    
+     MOV BL,V[SI] 
+    CMP BL,'a'
+    JE CON1
+     MOV BL,V[SI] 
+    CMP BL,'e'
+    JE CON1
+     MOV BL,V[SI] 
+    CMP BL,'i'
+    JE CON1
+     MOV BL,V[SI] 
+    CMP BL,'o'
+    JE CON1
+     MOV BL,V[SI] 
+    CMP BL,'u'
+    JE CON1  
+   
+    
+    NCON:
+    DEC SI
+    LOOP LOP 
+    JMP DI 
+    CON1:
+    INC DL
+    INC AH
+    DEC SI 
+    LOOP LOP
+    JMP DI
+    
+    CON:
+    INC DL
+    INC DH
+    DEC SI 
+    LOOP LOP
+    JMP DI
+     
+    LOOP LOP
+   ; DEC SI
+    ;DEC CX 
+    ;JNZ LOP
+    
+    
+    DI:
+   
+    MOV AH,2 
+    ADD DL,30H
+    INT 21H 
+    MOV DL,0AH
+    INT 21H
+    MOV DL,0DH
+    INT 21H 
+    
+    MOV DL,DH
+    ADD DL,30H 
+    INT 21H 
+    MOV DL,0AH
+    INT 21H 
+    MOV DL,0DH
+    INT 21H 
+    
+    MOV DL,AH
+    ADD DL,30H 
+    INT 21H
+    
+    EXIT:
+    MOV AH, 4CH 
+    INT 21H  
+    
+  
